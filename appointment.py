@@ -25,14 +25,14 @@ def overlap(day, newStart, newEnd):
 			return True
 	return False
 
-def add_appointment(day_start_finish):
-	day,start,finish = day_start_finish.split(' ')
+def add_appointment(day_name_start_finish):
+	day,name,start,finish = day_name_start_finish.split(' ')
 	if  1440 < hour2min(start) or 1440 < hour2min(finish):
 		return "Invalid time"
 	if overlap(day, start, finish):
 		return "Appointement overlap"
 	else:
-		week[day].append(start + "-" + finish)
+		week[day].append(name+" "+start + "-" + finish)
 		return "Appointement added"
 
 def rem_appointment(day_start_finish):
@@ -48,10 +48,10 @@ print("Functions:\nadd\nrem\nshow")
 s = input()
 while s != 'quit':
 	if s == 'add':
-		print("Enter: day start finish")
+		print("Enter: day name start finish ex. mon dentist 12:43 16:40")
 		print(add_appointment(input()))
 	if s == 'rem':
-		print("Enter: day start")
+		print("Enter: day start ex. sun 00:12")
 		print(rem_appointment(input()))
 	if s == 'show':
 		print(week)
