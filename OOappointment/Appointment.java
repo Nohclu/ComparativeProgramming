@@ -5,21 +5,21 @@ public class Appointment {
 
     public Appointment(String name, String startTime, String finishTime){
         this.name = name;
+        if (isValidTime(startTime) && isValidTime(finishTime)){
         this.startTime = startTime;
         this.finishTime = finishTime;
+        }
+        else {System.out.println("Time is invalid");}
     }
 
     private Boolean isValidTime(String time){
         String[] t = time.split(":");
-        int t1 = (int) t[0];
-        int t2 = (int) t[1];
+        int t1 = Integer.parseInt(t[0]);
+        int t2 = Integer.parseInt(t[1]);
         if (t1 > 23 || t2 > 59){
             return false;
         }
         return true;
-    }
-
-    public int timeToMinutes(int h, int m){
     }
 
     public String getName(){
