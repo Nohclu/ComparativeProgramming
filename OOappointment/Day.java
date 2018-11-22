@@ -9,7 +9,10 @@ public class Day {
     }
 
     public void append(Appointment app){
-        if (overlap(app)){
+        if (app.getStartTime() == "00:00" && app.getFinishTime() == "00:00"){
+            System.out.println("Time is invalid");
+        }
+        else if (overlap(app)){
             System.out.println("Appointment Overlap");
         }
         else{

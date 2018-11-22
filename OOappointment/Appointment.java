@@ -9,7 +9,10 @@ public class Appointment {
         this.startTime = startTime;
         this.finishTime = finishTime;
         }
-        else {System.out.println("Time is invalid");}
+        else {
+        this.startTime = "00:00";
+        this.finishTime = "00:00";
+        }
     }
 
     private Boolean isValidTime(String time){
