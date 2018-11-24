@@ -15,7 +15,7 @@ public class main {
         week.put("sun", new Day("sun"));
 
         Scanner scan = new Scanner(System.in);
-        System.out.println("Loop Start");
+        System.out.println("Functions:\nadd (Add an appointment)\nshowday (Show appointments for a single day)\nremove (Remove existing appointment)\nhelp (Display this message again)\nquit (Quit the program)");
         while (true){
             String input = scan.nextLine();
            
@@ -31,13 +31,12 @@ public class main {
                     }
                 }
             }
-            if (input.equals("show")){
+            if (input.equals("showday")){
                 System.out.println("Enter: day ex. tue");
                 String userInput = scan.nextLine();
                 for ( String key : week.keySet()) {
                     if (key.equals(userInput)){
                         Day day = week.get(key);
-                        System.out.println(day.getAppointments());
                         for (Appointment app: day.appointments){
                             System.out.println(app.getName() +" "+app.getStartTime()+" "+app.getFinishTime());
                         }
@@ -45,11 +44,25 @@ public class main {
                     }
                 }
             }
-
+            if (input.equals("remove")){
+                System.out.println("Enter: day startTime ex. sun 12:00");
+                String remAppDet = scan.nextLine();
+                String[] userInput = remAppDet.split(" ");
+                for ( String key : week.keySet()) {
+                    if (key.equals(userInput[0])){
+                        Day day = week.get(key);
+                        day.remove(userInput[1]);
+                    }
+                }
+            }
+            if (input.equals("help")){
+                System.out.println("Functions:\nadd (Add an appointment)\nshowday (Show appointments for a single day)\nremove (Remove existing appointment)\nhelp (Display this message again)\nquit (Quit the program)");
+            }
             if (input.equals("quit")){
+                System.out.println("Bye Bye");
+                scan.close();
                 break;
             }
-
         }
     }
 }
