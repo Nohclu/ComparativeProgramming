@@ -10,8 +10,8 @@ public class Appointment {
         this.finishTime = finishTime;
         }
         else {
-        this.startTime = "00:00";
-        this.finishTime = "00:00";
+            this.startTime = "00:00";
+            this.finishTime = "00:00";
         }
     }
 
