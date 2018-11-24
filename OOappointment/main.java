@@ -1,11 +1,8 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class main {
     public static void main(String[] args) {
-        Map<String, Day> week = new HashMap<String, Day>();
+        Map<String, Day> week = new LinkedHashMap<String, Day>();
         week.put("mon", new Day("mon"));
         week.put("tue", new Day("tue"));
         week.put("wed", new Day("wed"));
@@ -17,7 +14,7 @@ public class main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Functions:\nadd (Add an appointment)\nshowday (Show appointments for a single day)\nremove (Remove existing appointment)\nhelp (Display this message again)\nquit (Quit the program)");
         while (true){
-            String input = scan.nextLine();
+            String input = scan.nextLine().trim();
            
             if (input.equals("add")){
                 System.out.println("Enter: day name start finish ex. mon dentist 08:43 14:30");
@@ -33,7 +30,7 @@ public class main {
             }
             if (input.equals("showday")){
                 System.out.println("Enter: day ex. tue");
-                String userInput = scan.nextLine();
+                String userInput = scan.nextLine().trim();
                 for ( String key : week.keySet()) {
                     if (key.equals(userInput)){
                         Day day = week.get(key);
@@ -44,9 +41,18 @@ public class main {
                     }
                 }
             }
+            if (input.equals("show")){
+                for ( String key : week.keySet()) {
+                    Day day = week.get(key);
+                    System.out.println(key);
+                    for (Appointment app: day.appointments){
+                        System.out.println(app.getName() +" "+app.getStartTime()+" "+app.getFinishTime());
+                    }
+                }
+            }
             if (input.equals("remove")){
                 System.out.println("Enter: day startTime ex. sun 12:00");
-                String remAppDet = scan.nextLine();
+                String remAppDet = scan.nextLine().trim();
                 String[] userInput = remAppDet.split(" ");
                 for ( String key : week.keySet()) {
                     if (key.equals(userInput[0])){
