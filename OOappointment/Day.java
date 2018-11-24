@@ -21,6 +21,16 @@ public class Day {
         }
     }
 
+    public void remove(String startTime){
+        for (Appointment app: appointments){
+            if (app.getStartTime().equals(startTime)){
+                appointments.remove(app);
+                System.out.println("Appointment Removed");
+                break;
+            }
+        }
+    }
+
     public int timeToMinutes(String time){
         String[] t = time.split(":");
         int hour = Integer.parseInt(t[0]);
