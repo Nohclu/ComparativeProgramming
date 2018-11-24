@@ -43,10 +43,10 @@ public class Day {
         int newStart = timeToMinutes(app.getStartTime());
         int newFinish = timeToMinutes(app.getFinishTime());
         for(Appointment appointment: appointments ){
-            if (timeToMinutes(appointment.getStartTime()) < newStart
-                && timeToMinutes(appointment.getFinishTime()) > newStart
-                || timeToMinutes(appointment.getStartTime()) < newFinish
-                && timeToMinutes(appointment.getFinishTime()) > newFinish){
+            if (timeToMinutes(appointment.getStartTime()) <= newStart
+                && timeToMinutes(appointment.getFinishTime()) >= newStart
+                || timeToMinutes(appointment.getStartTime()) <= newFinish
+                && timeToMinutes(appointment.getFinishTime()) >= newFinish){
                     return true;
                 }
         }
