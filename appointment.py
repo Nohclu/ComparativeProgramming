@@ -18,10 +18,8 @@ def hour2min(time):
 def overlap(day, newStart, newEnd):
 	for i in week[day]:
 		if hour2min(i.split("-")[0]) < hour2min(newStart) < hour2min(i.split("-")[1]):
-			print("Hit1")
 			return True 
 		elif hour2min(i.split("-")[0]) <= hour2min(newEnd) <= hour2min(i.split("-")[1]):
-			print("Hit2")
 			return True
 	return False
 
@@ -37,8 +35,10 @@ def add_appointment(day_name_start_finish):
 		week[day].append(name+" "+start + "-" + finish)
 		return "Appointement added"
 
-def rem_appointment(day_start_finish):
-	day,start = day_start_finish.split(' ')
+def rem_appointment(day_start):
+	day,start = day_start.split(' ')
+	if int(start.split(':')[1]) >= 60:
+		return "Invalid minutes"
 	if  1440 < hour2min(start):
 		return "Invalid time"
 	for i,val in enumerate(week[day]):

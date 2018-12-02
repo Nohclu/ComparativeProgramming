@@ -31,7 +31,7 @@ public class Day {
         }
     }
 
-    public int timeToMinutes(String time){
+    private int timeToMinutes(String time){
         String[] t = time.split(":");
         int hour = Integer.parseInt(t[0]);
         int min = Integer.parseInt(t[1]);
@@ -57,7 +57,7 @@ public class Day {
         return name;
     }
     
-    public ArrayList getAppointments(){
-        return appointments;
-    }
+    // public ArrayList getAppointments(){
+    //     return appointments;
+    // }
 }
